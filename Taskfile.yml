@@ -1,0 +1,42 @@
+version: "3"
+
+vars:
+  PYTHON: python3
+  SOURCE_DIR: source
+  BUILD_DIR: build
+  HTML_DIR: "{{.BUILD_DIR}}/html"
+  DOXYFILE: docs/doxyfile
+  DOXYGEN_SOURCE_DIR: "{{.SOURCE_DIR}}/doxygen/cavise"
+  DOXYGEN_SITE_DIR: "{{.HTML_DIR}}/doxygen/cavise"
+
+tasks:
+  default:
+    desc: Show available documentation tasks
+    cmds:
+      - task --list
+
+  help:
+    desc: Show Sphinx builder help
+    cmds:
+      - "{{.PYTHON}} -m sphinx -M help {{.SOURCE_DIR}} {{.BUILD_DIR}}"
+
+  html:
+    desc: Build the HTML documentation site
+    cmds:
+      - rm -rf "{{.BUILD_DIR}}/html"
+      - "{{.PYTHON}} -m sphinx -M html {{.SOURCE_DIR}} {{.BUILD_DIR}}"
+
+  clean:
+    desc: Remove generated documentation artifacts
+    cmds:
+      - rm -rf "{{.SOURCE_DIR}}/doxygen" "{{.BUILD_DIR}}"
+
+  linkcheck:
+    desc: Validate internal and external links
+    cmds:
+      - "{{.PYTHON}} -m sphinx -M linkcheck {{.SOURCE_DIR}} {{.BUILD_DIR}}"
+
+  live:
+    desc: Run a local auto-reloading docs server
+    cmds:
+      - "{{.PYTHON}} -m sphinx_autobuild {{.SOURCE_DIR}} {{.BUILD_DIR}}/html"
