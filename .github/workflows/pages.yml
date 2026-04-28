@@ -39,7 +39,6 @@ jobs:
           requirements-file: ${{ env.DOCS_REQUIREMENTS_FILE }}
           source-directory: ${{ env.DOCS_SOURCE_DIRECTORY }}
           build-directory: ${{ env.DOCS_BUILD_DIRECTORY }}
-          site-directory: ${{ env.DOCS_SITE_DIRECTORY }}
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v5
