@@ -33,7 +33,7 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Build documentation site
-        uses: CAVISE/pipelines/actions/documentation-build@main
+        uses: CAVISE/pipelines/actions/documentation-build@ci/docs-build
         with:
           docs-directory: ${{ env.DOCS_DIRECTORY }}
           requirements-file: ${{ env.DOCS_REQUIREMENTS_FILE }}
