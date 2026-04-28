@@ -8,6 +8,9 @@ author = "CAVISE Dev Team"
 release = "1.0"
 
 html_logo = "_static/images/logo.svg"
+html_favicon = "_static/images/favicon.svg"
+html_title = "CAVISE Documentation"
+html_short_title = "CAVISE Docs"
 
 extensions = []
 
